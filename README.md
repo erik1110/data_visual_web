@@ -20,3 +20,7 @@ upgrade
 ```terminal=
 python3 manager.py db upgrade
 ```
+run server
+```terminal=
+python3 manager.py runserver
+```
