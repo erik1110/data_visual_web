@@ -15,22 +15,31 @@ def index():
 
 @app.route('/create_data', methods=['POST'])
 def create_data():
-    user_info = Users({
-                 "user_id": request.form.get('user_id'),
-                 "username": request.form.get('username'),
-                 "name": request.form.get('name'),
-                 "sex": request.form.get('sex'),
-                 "address": request.form.get('address'),
-                 "mail": request.form.get('mail'),
-                 "birthdate": request.form.get('birthdate'),
-                 "country": request.form.get('country'),
-                 "job": request.form.get('job'),
-                 "phone_number": request.form.get('phone_number'),
-                 "date": request.form.get('date'),
-                })
-    db.session.add(user_info)
+    print("="*50)
+    user_info = {
+                 "user_id": request.args['user_id'],
+                 "username": request.args['username'],
+                 "name": request.args['name'],
+                 "sex": request.args['sex'],
+                 "address": request.args['address'],
+                 "mail": request.args['mail'],
+                 "birthday": request.args['birthday'],
+                 "country": request.args['country'],
+                 "job": request.args['job'],
+                 "phone_number": request.args['phone_number'],
+                 "date": request.args['date']
+                }
+    print("user_info:", user_info)
+    user = Users(**user_info)
+    db.session.add(user)
     db.session.commit()
     print("寫入資料成功")
     return jsonify(user_info)
+
+@app.route('/say_hello', methods=['POST'])
+def submit():
+    name = request.args['username']
+    print("name", str(name))
+    return "Hello, " + str(name)
 
     
