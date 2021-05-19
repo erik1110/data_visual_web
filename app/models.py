@@ -1,10 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-from app.views import app
 
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 # 定義 Users 模型
-class User(db.Model):
+class Users(db.Model):
     __tablename__ = 'users'
     user_id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(255), nullable=False)
@@ -17,3 +16,4 @@ class User(db.Model):
     job = db.Column(db.String(255))
     phone_number = db.Column(db.String(255))
     date = db.Column(db.String(12))
+    
