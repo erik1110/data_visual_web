@@ -1,7 +1,7 @@
 POSTGRES = {
     'user': 'postgres',
     'password': 'PASSWORD',
-    'db': 'erik',
+    'db': 'your_db',
     'host': 'localhost',
     'port': '5432',
     }
